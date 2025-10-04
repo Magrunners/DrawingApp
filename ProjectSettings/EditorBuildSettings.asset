@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Tales.unity
+    guid: 0f7bc6fad6631334b9d0cb390b3a8cda
+  - enabled: 1
+    path: Assets/Scenes/AutoIndastry.unity
+    guid: 13c096066f7668d40865d0cb99e24eae
+  - enabled: 1
+    path: Assets/Scenes/Designer.unity
+    guid: 43bdc980846502a49a16efbeeaddeeb6
+  - enabled: 1
+    path: Assets/Scenes/TechnoMagic.unity
+    guid: b7279a3d7b2cd5b4f9815ee565b16c21
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_UseUCBPForAssetBundles: 0
