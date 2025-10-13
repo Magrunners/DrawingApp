@@ -3,14 +3,17 @@ using UnityEngine.EventSystems;
 
 public class DragRobotParts : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public Camera camera3D;
+    private Camera mainCamera;
     private Vector3 dragOffset;
     private bool isDragging = false;
 
+
+
     void Start()
     {
-        if (camera3D.GetComponent<PhysicsRaycaster>() == null)
-            camera3D.gameObject.AddComponent<PhysicsRaycaster>();
+        mainCamera = Camera.main;
+        if (mainCamera.GetComponent<PhysicsRaycaster>() == null)
+            mainCamera.gameObject.AddComponent<PhysicsRaycaster>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -18,8 +21,8 @@ public class DragRobotParts : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         isDragging = true;
 
         // Вычисляем смещение от центра объекта до точки клика
-        Vector3 screenPos = camera3D.WorldToScreenPoint(transform.position);
-        dragOffset = transform.position - camera3D.ScreenToWorldPoint(
+        Vector3 screenPos = mainCamera.WorldToScreenPoint(transform.position);
+        dragOffset = transform.position - mainCamera.ScreenToWorldPoint(
             new Vector3(eventData.position.x, eventData.position.y, screenPos.z));
     }
 
@@ -29,9 +32,9 @@ public class DragRobotParts : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         // Позиционируем объект с учетом смещения
         Vector3 screenPos = new Vector3(eventData.position.x, eventData.position.y,
-            camera3D.WorldToScreenPoint(transform.position).z);
+            mainCamera.WorldToScreenPoint(transform.position).z);
 
-        transform.position = camera3D.ScreenToWorldPoint(screenPos) + dragOffset;
+        transform.position = mainCamera.ScreenToWorldPoint(screenPos) + dragOffset;
     }
 
     public void OnEndDrag(PointerEventData eventData)
